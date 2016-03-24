@@ -8,6 +8,9 @@ var PORT = process.env.PORT || 3000;
 
 var db = require('./config/db');
 
+/* The server will serve all/any files in 'public' */
+app.use(express.static('public'));
+
 
 
 /* Connect to Server */
@@ -18,7 +21,7 @@ MongoClient.connect( db.url, function(err, db){
 
 	/* send users to angular app */
 	app.get('/', (req,res)=>{
-		res.send('Test page');
+		res.sendFile(__dirname+'/public/index.html');
 	});
 
 
