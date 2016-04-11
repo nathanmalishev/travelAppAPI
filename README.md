@@ -3,6 +3,8 @@
 ** Installation **
 run `npm install`
 run `bower install`
+
+make sure you are running a mongod instance -> run `mongod`
 run `npm start`
 
 
