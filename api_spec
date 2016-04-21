@@ -30,3 +30,8 @@ Authorization: 'Bearer '+token
 -me - DELETE
   -returns deleted user
   {user}
+
+
+
+
+/group

@@ -40,7 +40,7 @@ exports.delete = function (req, res, next) {
 
 exports.put = function (req, res, next) {
   //TODO: if user passes in random group id they could update it even if they aren't in it
-  //need some auth
+  //need some auth  --- This should be done before on any group route
   var group = req.group;
 
   var update = req.body;
