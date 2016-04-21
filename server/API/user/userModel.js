@@ -16,10 +16,36 @@ var UserSchema = new Schema({
   },
 });
 
+UserSchema.pre('save', function (next) {
+  if (!this.isModified('password')) {return next();}
 
-//TODO: Add pre save to hash password
+  this.password = this.encryptPassword(this.password);
+  next();
+});
 
 //TODO: add authentication methods on UserSchema method
+UserSchema.methods = {
 
+  //check passwords on sign in
+  authenticate: function (plainTextPassword) {
+    return bcrypt.compareSync(plainTextPassword, this.password);
+  },
+
+  //hash password
+  encryptPassword: function (plainTextPassword) {
+    if (!plainTextPassword) {
+      return '';
+    }else {
+      var salt = bcrypt.genSaltSync(10);
+      return bcrypt.hashSync(plainTextPassword, salt);
+    }
+  },
+  //return user without hashed password
+  toJson: function () {
+    var obj = this.toObject();
+    delete obj.password;
+    return obj;
+  },
+};
 
 module.exports = mongoose.model('user', UserSchema);
