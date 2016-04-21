@@ -1,5 +1,0 @@
-API SPEC
-
-/me - POST
-  - creates a user returns
-    {token, user}

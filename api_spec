@@ -1,0 +1,32 @@
+API SPEC
+
+/me - POST
+  - creates a user returns
+    {token, user}
+
+    if the user name is already taken returns
+    {success:false, message:}
+
+
+/signin - POST
+  -post { username: , password: }
+  -returns jwt if successful
+
+  if creditentials inccorect
+  {success:false, message:}
+
+all need JWT token in Header as
+Authorization: 'Bearer '+token
+
+/me - GET
+  -returns user
+  {user}
+
+/me - PUT
+  -pass in fields you want to update
+  -returns updated user
+  {user}
+
+-me - DELETE
+  -returns deleted user
+  {user}
