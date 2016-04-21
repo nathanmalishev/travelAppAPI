@@ -1,8 +1,7 @@
 var express      = require('express');
 var app          = express();
 var config       = require('./config/config');
-var defaultRoute = require('./api/defaultRoute');
-var travelRoute  = require('./api/travelRoute');
+var apiRoutes = require('./api/api');
 
 var mongoose = require('mongoose').connect(config.db.url);
 var db = mongoose.connection;
@@ -18,9 +17,20 @@ db
 app.use(express.static('public'));
 
 
-app.use('/', defaultRoute);
-app.use('/travel', travelRoute);
+app.use('/api', apiRoutes);
 
+
+/* Global error handling */
+app.use(function(err, req, res, next){
+  // if error thrown from jwt validation check
+  if (err.name === 'UnauthorizedError') {
+    res.status(401).send('Invalid token');
+    return;
+  }
+
+  logger.error(err.stack);
+  res.status(500).send('Error caught in API');
+})
 
 
 module.exports = app;
