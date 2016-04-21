@@ -1,10 +1,13 @@
 var router = require('express').Router();
-var controller = require('./userController')
+var controller = require('./userController');
+var auth = require('../auth/auth');
+
+var authMiddleware = [auth.decodeToken(), auth.getFreshUser()]
 
 router.route('/')
-  .get(controller.get)
-  .put(controller.put)
-  .post(controller.post)
-  .delete(controller.delete)
+  .get(authMiddleware, controller.getOne)
+  .put(authMiddleware, controller.put)
+  .post(controller.post, controller.notUniqueError)
+  .delete(authMiddleware, controller.delete);
 
 module.exports = router;
