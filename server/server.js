@@ -12,10 +12,16 @@ db
     console.log('db connnected')
   })
 
+/*set up the middleware */
+require('./middleware/appMiddleware')(app);
+
 
 /* The server will serve all/any files in 'public' */
 app.use(express.static('public'));
 
+app.post('/',function(req,res){
+    res.send(req.body);
+  })
 
 app.use('/api', apiRoutes);
 
@@ -28,7 +34,7 @@ app.use(function(err, req, res, next){
     return;
   }
 
-  logger.error(err.stack);
+  console.log(err.stack);
   res.status(500).send('Error caught in API');
 })
 

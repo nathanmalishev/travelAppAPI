@@ -3,20 +3,23 @@ var User = require('./userModel');
 
 exports.get = function(req,res,next){
   console.log(req.body)
-  res.send({
-    "name":"nathan",
-    "email":"nathan.malishev@gmail.com"
-  })
+  res.send(req.body)
 }
 
 exports.delete = function(req,res,next){
-  res.json(req.body);
+  res.json({
+    "username":"nathan"
+  })
 }
 
 exports.put = function(req,res,next){
-  res.json(req.body);
+  res.json({
+    "username":"nathan"
+  })
 }
 
 exports.post = function(req,res,next){
+  console.log('a');
   res.json(req.body);
+  next();
 }
