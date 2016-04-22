@@ -12,7 +12,7 @@ db
     console.log('db connnected');
   });
 
-if(config.seed){
+if (config.seed) {
   require('./util/seed');
 }
 
@@ -22,11 +22,7 @@ require('./middleware/appMiddleware')(app);
 
 /* The server will serve all/any files in 'public' */
 app.use(express.static('public'));
-
-app.post('/', function (req, res) {
-    res.send(req.body);
-  });
-
+/* use api routes */
 app.use('/api', apiRoutes);
 
 
@@ -39,7 +35,7 @@ app.use(function (err, req, res, next) {
   }
 
   console.log(err.stack);
-  res.status(500).send('Error caught in API');
+  res.status(500).send('Err..');
 });
 
 module.exports = app;
