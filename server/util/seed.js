@@ -3,12 +3,12 @@ var Group = require('../api/group/groupModel');
 var _ = require('lodash');
 
 var users = [
-  { username: 'nathan', password: 'test' },
-  { username: 'john', password: 'test' },
-  { username: 'fred', password: 'test' },
-  { username: 'tim', password: 'test' },
-  { username: 'sam', password: 'test' },
-  { username: 'alfred', password: 'test' },
+  { username: 'nathan', password: 'test', email: 'nathan@gmail.com' },
+  { username: 'john', password: 'test', email: 'john@gmail.com' },
+  { username: 'fred', password: 'test', email: 'fred@gmail.com' },
+  { username: 'tim', password: 'test', email: 'tim@gmail.com' },
+  { username: 'sam', password: 'test', email: 'sam@gmail.com' },
+  { username: 'alfred', password: 'test', email: 'alfred@gmail.com' },
 ];
 
 var group1 = {

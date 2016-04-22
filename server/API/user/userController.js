@@ -48,8 +48,9 @@ exports.post = function (req, res, next) {
 };
 
 exports.notUniqueError = function (err, req, res, next) {
+  console.log(err)
   res.json({
     success: false,
-    message: 'User not created. Username already in use',
+    message: 'User not created message: '+err.message+' '+JSON.stringify(err.errors),
   });
 };
