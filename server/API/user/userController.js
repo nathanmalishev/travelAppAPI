@@ -43,14 +43,14 @@ exports.post = function (req, res, next) {
     if (err) { return next(err);}
 
     var token = signToken(user._id);
-    res.json({ token: token, user: user.toJson() });
+    res.json({ success: true, token: token, user: user.toJson() });
   });
 };
 
 exports.notUniqueError = function (err, req, res, next) {
-  console.log(err)
+  console.log(err);
   res.json({
     success: false,
-    message: 'User not created message: '+err.message+' '+JSON.stringify(err.errors),
+    message: 'User not created message: ' + err.message + ' ' + JSON.stringify(err.errors),
   });
 };

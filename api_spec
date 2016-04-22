@@ -2,24 +2,19 @@ API SPEC
 
 /me - POST
   - creates a user returns
-    {token, user}
-
-    if the user name is already taken returns
-    {success:false, message:}
-
+    returns {success:true, token, user} or if there is an error
+    returns {success:false, message:}
 
 /signin - POST
-  -post { username: , password: }
-  -returns jwt if successful
+  - Post a {username,password}
+  - returns {success:true , token} or if there is an error
+  - returns {success:false, message}
 
-  if creditentials inccorect
-  {success:false, message:}
 
-all need JWT token in Header as
-Authorization: 'Bearer '+token
+/ **** Below are all protected routes **** /
 
 /me - GET
-  -returns user
+  -returns the current user (based on jwt)
   {user}
 
 /me - PUT
@@ -33,5 +28,6 @@ Authorization: 'Bearer '+token
 
 
 
+/groups - GET
+  -returns all groups (will be changed to return only the groups the user is in)
 
-/group
