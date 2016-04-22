@@ -12,6 +12,10 @@ db
     console.log('db connnected');
   });
 
+if(config.seed){
+  require('./util/seed');
+}
+
 /*set up the middleware */
 require('./middleware/appMiddleware')(app);
 

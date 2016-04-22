@@ -1,7 +1,7 @@
 var router = require('express').Router();
 var meRoute = require('./user/userRoutes');
 var authRoute = require('./auth/routes');
-var groupsRoute = require('./groups/groupRoutes')
+var groupsRoute = require('./group/groupRoutes')
 var auth = require('./auth/auth')
 
 authMiddleware = [ auth.decodeToken(), auth.getFreshUser()]
