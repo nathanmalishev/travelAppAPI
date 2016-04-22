@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt');
+require('mongoose-type-email');
 
 var UserSchema = new Schema({
   username: {
@@ -16,7 +17,7 @@ var UserSchema = new Schema({
   },
 
   email: {
-    type: String,
+    type: mongoose.SchemaTypes.Email,
     required: true,
   },
 
