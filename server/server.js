@@ -19,12 +19,8 @@ if (config.seed) {
 /*set up the middleware */
 require('./middleware/appMiddleware')(app);
 
-
-/* The server will serve all/any files in 'public' */
-app.use(express.static('public'));
 /* use api routes */
 app.use('/api', apiRoutes);
-
 
 /* Global error handling */
 app.use(function (err, req, res, next) {
